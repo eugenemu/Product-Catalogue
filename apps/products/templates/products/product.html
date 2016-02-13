@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+  <title>Product Catalog</title>
+  {% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'products/style.css' %}">
+</head>
+<body>
+	<a href="{% url 'back' %}">Back to Product Listing</a>
+	<h3>{{product.product}}</h3>
+	<form id="add" action="{% url 'update' product.id %}", method="POST">
+	{%  csrf_token %}
+	<label>Manufacturers:
+		<select name="manufacturer">
+			<option value="Select a Brand...">Select a Brand...</option>
+			<option value="Samsung">Samsung</option>
+			<option value="Apple">Apple</option>
+			<option value="Microsoft">Microsoft</option>
+			<option value="Nike">Nike</option>
+		</select>
+	</label>
+	<label>Product: <input type="text" name="product" value="{{product.product}}"></label>
+	<label>Price: <input type="text" name="price" value="{{product.price}}"></label>
+	<label>Description: <br><textarea rows="2" cols="20" name="description">{{product.description}}</textarea></label>
+	<button>Update</button>
+	</form>
+	<form action="{% url 'remove' product.id %}">
+		<button>Delete</button>
+	</form>
+	{% if messages %}
+		{% for message in messages %}
+			<p>{{message}}</p>
+		{% endfor %}
+	{% endif %}
+</body>
+</html>

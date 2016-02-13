@@ -1,0 +1,22 @@
+table, th, td {
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+
+table {
+	margin-left: 10px;
+}
+
+td {
+	padding: 0px 25px;
+}
+
+#add {
+	width: 200px;
+}
+
+label {
+	display: block;
+	vertical-align: top;
+}
+
